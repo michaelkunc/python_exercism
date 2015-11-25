@@ -1,11 +1,9 @@
 def hey(what):
     what = what.strip()
-    if what == what.upper() and any(c.isalpha() for c in what):
+    if what.isupper():
         return 'Whoa, chill out!'
-    if len(what) == 0:
+    if not what:
         return 'Fine. Be that way!'
     if what.endswith('?'):
         return 'Sure.'
-    else:
-        return 'Whatever.'
-
+    return 'Whatever.'
