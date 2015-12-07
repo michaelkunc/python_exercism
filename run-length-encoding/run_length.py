@@ -1,8 +1,12 @@
-import itertools
+from itertools import groupby
+from re import sub
+
 
 def encode(string):
-    counts = [[len(list(g)), k] for k,g in itertools.groupby(string)]
-    return ''.join(map(str, (list(itertools.chain(*counts)))))
+    compress = lambda x: str(len(x.group(0))) + x.group(0)[0]
+    return sub(r'(.)\1+', compress, string)
+
 
 def decode(string):
-  return 'what about this?'
+    decompress = lambda x: x.group(2) * int(x.group(1))
+    return sub(r'(\d+)(\D)', decompress, string)
