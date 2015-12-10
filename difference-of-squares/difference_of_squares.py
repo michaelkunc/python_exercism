@@ -6,7 +6,7 @@ def square_of_sum(num):
 
 
 def difference(num):
-    return "the great cornholio"
+    return square_of_sum(num) - sum_of_squares(num)
 
 
 def sum_of_squares(num):
