@@ -56,16 +56,16 @@ class AnagramTests(unittest.TestCase):
                             'cashregister Carthorse radishes'.split())
         )
 
-    # def test_same_word_isnt_anagram(self):
-    #     self.assertEqual(
-    #         [],
-    #         detect_anagrams('banana', ['banana'])
-    #     )
+    def test_same_word_isnt_anagram(self):
+        self.assertEqual(
+            [],
+            detect_anagrams('banana', ['banana'])
+        )
 
-    #     self.assertEqual(
-    #         [],
-    #         detect_anagrams('go', 'go Go GO'.split())
-    #     )
+        self.assertEqual(
+            [],
+            detect_anagrams('go', 'go Go GO'.split())
+        )
 
 if __name__ == '__main__':
     unittest.main()

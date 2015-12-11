@@ -1,5 +1,3 @@
 
-
 def detect_anagrams(word, possible_anagrams):
-    results = [x for x in possible_anagrams if ''.join(sorted(x)) == ''.join(sorted(word))]
-    return results
+    return [x for x in possible_anagrams if ''.join(sorted(x.lower())) == ''.join(sorted(word.lower())) and x.lower() != word.lower()]
