@@ -1,9 +1,9 @@
 from datetime import date
+import calendar
 
 
 def meetup_day(year, month, day, week):
-    days = {'Monday': 0, 'Tuesday': 1, 'Wednesday': 2,
-            'Thursday': 3, 'Friday': 4, 'Saturday': 5, 'Sunday': 6}
+    days = dict(zip(list(calendar.day_name), range(7)))
     date_ranges = {'teenth': [13, 19], '1st':[1, 8], '2nd': [8,15], '3rd': [15, 22],
         '4th':[22, 29], 'last':[25, 32], 'last_week_in_feb': [22,30]}
 
