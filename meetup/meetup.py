@@ -9,11 +9,13 @@ def meetup_day(year, month, day, week):
     day_of_month = [d for d in calendar.Calendar().itermonthdates(
         year, month) if d.weekday() == days[day] and d.month == month]
 
-    if week == 'teenth':
-        return next(d for d in day_of_month if d.day >= 13 and d.day <= 19)
+    try:
+        if week == 'teenth':
+            return next(d for d in day_of_month if d.day >= 13 and d.day <= 19)
+        elif week == 'last':
+            return day_of_month[-1]
+        else:
+            return day_of_month[int(week[0]) - 1]
 
-    elif week == 'last':
-        return day_of_month[-1]
-
-    else:
-        return day_of_month[int(week[0]) - 1]
+    except IndexError:
+        raise ArgumentException
