@@ -10,8 +10,7 @@ def meetup_day(year, month, day, week):
         year, month) if d.weekday() == days[day] and d.month == month]
 
     if week == 'teenth':
-        teenth = filter(lambda x: x.day >= 13 and x.day <= 19, day_of_month)
-        return teenth[0]
+        return next(d for d in day_of_month if d.day >= 13 and d.day <= 19)
 
     elif week == 'last':
         return day_of_month[-1]
