@@ -30,9 +30,9 @@ class MeetupTest(unittest.TestCase):
         self.assertEqual(date(2013, 9, 19),
                          meetup_day(2013, 9, 'Thursday', '3rd'))
 
-    # def test_fourth_sunday_of_march_2013(self):
-    #     self.assertEqual(date(2013, 3, 24),
-    #                      meetup_day(2013, 3, 'Sunday', '4th'))
+    def test_fourth_sunday_of_march_2013(self):
+        self.assertEqual(date(2013, 3, 24),
+                         meetup_day(2013, 3, 'Sunday', '4th'))
 
     def test_last_thursday_of_october_2013(self):
         self.assertEqual(date(2013, 10, 31),
@@ -54,9 +54,9 @@ class MeetupTest(unittest.TestCase):
         self.assertEqual(date(2012, 12, 7),
                          meetup_day(2012, 12, 'Friday', '1st'))
 
-    # def test_fifth_monday_of_march_2015(self):
-    #     self.assertEqual(date(2015, 3, 30),
-    #                      meetup_day(2015, 3, 'Monday', '5th'))
+    def test_fifth_monday_of_march_2015(self):
+        self.assertEqual(date(2015, 3, 30),
+                         meetup_day(2015, 3, 'Monday', '5th'))
 
     # def test_nonexistent_fifth_monday_of_february_2015(self):
     #     self.assertRaises(MeetupDayException, meetup_day,
