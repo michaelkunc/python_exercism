@@ -8,7 +8,7 @@ class Allergies:
         self.list = self.allergen_list()
 
     def allergen_list(self):
-        return sorted([x for x in self.allergens if self.is_allergic_to(x)], key=lambda i: self.allergens[i])
+        return sorted([x for x in self.allergens if self.is_allergic(x)], key=lambda i: self.allergens[i])
 
-    def is_allergic_to(self, allergen):
+    def is_allergic(self, allergen):
         return self.allergens[allergen] & self.score
