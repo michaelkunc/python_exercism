@@ -14,10 +14,10 @@ class SeriesTest(unittest.TestCase):
         self.assertEqual([[0], [1], [2], [3], [4]],
                          slices("01234", 1))
 
-    # def test_slices_of_two(self):
-    #     self.assertEqual([[9, 7], [7, 8], [8, 6], [6, 7],
-    #                       [7, 5], [5, 6], [6, 4]],
-    #                      slices("97867564", 2))
+    def test_slices_of_two(self):
+        self.assertEqual([[9, 7], [7, 8], [8, 6], [6, 7],
+                          [7, 5], [5, 6], [6, 4]],
+                         slices("97867564", 2))
 
     # def test_slices_of_three(self):
     #     self.assertEqual([[9, 7, 8], [7, 8, 6], [8, 6, 7],

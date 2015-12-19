@@ -1,3 +1,5 @@
+from itertools import permutations
+
 def slices(number, series_length):
 
     number_list = list(number)
