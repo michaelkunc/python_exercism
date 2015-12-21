@@ -1,18 +1,8 @@
-import itertools
 
 def slices(number, series_length):
-
-    # number_list = list(number)
-    # number_list = [map(int, i) for i in number_list]
-    # result_list = [number_list[i] for i in range(0, len(number_list), series_length )]
-    # return result_list
-
-    results = []
-    number_list = list(number)
-    number_list = [int(i) for i in number_list]
-    combinations = itertools.combinations(number_list, series_length)
-    combinations = [list(i) for i in combinations]
-    for i in combinations:
-        if i not in results:
-            results.append(i)
-    return results
+    if series_length > len(number):
+        raise ValueError("Series length must cannot be longer than the length of the number.")
+    elif series_length < 1:
+        raise ValueError("Series length must be greater than zero.")
+    else:
+        return [[int(x) for x in number[i:i+series_length]] for i in range(0,len(number) + 1 - series_length)]
