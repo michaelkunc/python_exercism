@@ -1,7 +1,9 @@
 
-def sum_of_multiples(number):
-    sum = 0
-    for i in range(1, number - 1):
-        if number % i == 0:
-            sum += i
-    return sum
+def sum_of_multiples(upper_limit, multiples=[]):
+    if len(multiples) != 0:
+        return sum (x for x in list(range(1, upper_limit)) if  is_multiple(x, multiples))
+    else:
+        return sum(x for x in list(range(1, upper_limit)) if x % 3 == 0 or x % 5 == 0)
+
+def is_multiple(number, multiples=[]):
+    return len([i for i in multiples if number % i == 0]) > 0
