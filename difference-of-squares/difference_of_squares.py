@@ -1,8 +1,6 @@
-from functools import reduce
-
 
 def square_of_sum(num):
-    return (reduce((lambda x, y: x + y), range(num + 1))) ** 2
+    return sum(range(num + 1)) ** 2
 
 
 def difference(num):
