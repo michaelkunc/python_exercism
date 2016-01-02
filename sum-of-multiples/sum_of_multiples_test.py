@@ -41,8 +41,8 @@ class SumOfMultiplesTest(unittest.TestCase):
     def test_configurable_43_47_to_10000(self):
         self.assertEqual(2203160, sum_of_multiples(10000, [43, 47]))
 
-    # def test_configurable_0_to_10(self):
-    #     self.assertEqual(0, sum_of_multiples(10, [0]))
+    def test_configurable_0_to_10(self):
+        self.assertEqual(0, sum_of_multiples(10, [0]))
 
     # def test_configurable_0_1_to_10(self):
     #     self.assertEqual(45, sum_of_multiples(10, [0, 1]))
