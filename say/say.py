@@ -29,6 +29,18 @@ digits_to_words = {
     90 : "ninety"
 }
 
-def say(digit):
-    if digit < 21:
-        return digits_to_words[digit]
+def say(integer):
+    response = []
+    list_of_ints = [int(l) for l in str(integer)]
+    if integer < 21:
+        return digits_to_words[integer]
+    else:
+        tens = list_of_ints[0] * 10
+        ones = list_of_ints[-1]
+        response.append(digits_to_words[tens])
+        response.append(digits_to_words[ones])
+        return '-'.join(response)
+
+
+
+

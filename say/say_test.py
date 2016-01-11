@@ -14,8 +14,8 @@ class SayTest(unittest.TestCase):
     def test_twenty(self):
         self.assertEqual("twenty", say(20))
 
-    # def test_twenty_two(self):
-    #     self.assertEqual("twenty-two", say(22))
+    def test_twenty_two(self):
+        self.assertEqual("twenty-two", say(22))
 
     # def test_one_hundred(self):
     #     self.assertEqual("one hundred", say(100))
