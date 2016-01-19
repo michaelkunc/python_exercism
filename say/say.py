@@ -40,8 +40,12 @@ def say(integer):
         return between_21_and_99(list_of_ints)
     elif integer == 100:
         return "one hundred"
-    elif integer > 100:
+    elif integer < 1000:
         return greater_than_100(list_of_ints)
+    elif integer == 1000:
+        return "one thousand"
+    elif integer < 10000:
+        return greater_than_1000(list_of_ints)
 
 
 def between_21_and_99(integer_list):
@@ -57,4 +61,8 @@ def greater_than_100(integer_list):
     tens = str(integer_list[1]) + str(integer_list[2])
     tens = say(int(tens))
     return hundreds + ' hundred and ' + tens
+
+def greater_than_1000(integer_list):
+    return "one thousand two hundred and thirty-four"
+
 
