@@ -1,4 +1,6 @@
+import string
 
 def is_pangram(sentence):
-    sentence = sentence.decode('unicode_escape').encode('ascii', 'ignore')
-    return len(set([c for c in sentence.lower() if str.isalpha(c)])) == 26
+    sentence = sentence.decode('unicode_escape').encode('ascii', 'ignore').lower()
+    alphabet = string.ascii_lowercase
+    return len(set(alphabet) - set(sentence.replace(" ",""))) == 0
