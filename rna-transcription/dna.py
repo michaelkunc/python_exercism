@@ -1,7 +1,7 @@
-from string import maketrans
-
 DNA = 'GCTA'
 RNA = 'CGAU'
 
+translation = dict(zip(DNA,RNA))
+
 def to_rna(strand):
-    return strand.translate(maketrans(DNA, RNA))
+    return ''.join(translation[i] for i in strand)
