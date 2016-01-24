@@ -1,6 +1,6 @@
 import string
 
 def is_pangram(sentence):
-    sentence = sentence.decode('unicode_escape').encode('ascii', 'ignore').lower()
-    alphabet = string.ascii_lowercase
-    return len(set(alphabet) - set(sentence.replace(" ",""))) == 0
+    sentence = set(sentence.lower().replace(' ',''))
+    alphabet = set(string.ascii_lowercase)
+    return len(alphabet - sentence) == 0
