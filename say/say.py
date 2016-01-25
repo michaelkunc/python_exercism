@@ -63,6 +63,11 @@ def greater_than_100(integer_list):
     return hundreds + ' hundred and ' + tens
 
 def greater_than_1000(integer_list):
-    return "one thousand two hundred and thirty-four"
+    thousands = say(integer_list[0])
+    hundreds = say(integer_list[1])
+    tens = str(integer_list[2]) + str(integer_list[3])
+    tens = say(int(tens))
+    return thousands + ' thousand ' + hundreds +' hundred and ' + tens
+
 
 
