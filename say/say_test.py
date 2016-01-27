@@ -55,8 +55,8 @@ class SayTest(unittest.TestCase):
     #     with self.assertRaises(AttributeError):
     #         say(-42)
 
-    # def test_zero(self):
-    #     self.assertEqual("zero", say(0))
+    def test_zero(self):
+        self.assertEqual("zero", say(0))
 
     # def test_987654321123(self):
     #     self.assertEqual("nine hundred and eighty-seven billion " +

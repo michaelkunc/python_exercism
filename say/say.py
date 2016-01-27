@@ -1,5 +1,6 @@
 
 digits_to_words = {
+    0: "zero",
     1: "one",
     2: "two",
     3: "three",
@@ -58,16 +59,19 @@ def between_21_and_99(integer_list):
 
 def greater_than_100(integer_list):
     hundreds = say(integer_list[0])
-    tens = str(integer_list[1]) + str(integer_list[2])
+    tens = get_tens(integer_list, 1,2)
     tens = say(int(tens))
     return hundreds + ' hundred and ' + tens
 
 def greater_than_1000(integer_list):
     thousands = say(integer_list[0])
     hundreds = say(integer_list[1])
-    tens = str(integer_list[2]) + str(integer_list[3])
+    tens = get_tens(integer_list, 2, 3)
     tens = say(int(tens))
     return thousands + ' thousand ' + hundreds +' hundred and ' + tens
+
+def get_tens(integer_list, first_index, second_index):
+    return str(integer_list[first_index]) + str(integer_list[second_index])
 
 
 
