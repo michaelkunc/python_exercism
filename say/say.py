@@ -1,5 +1,5 @@
 
-digits_to_words = {
+DIGITS_TO_WORDS = {
     0: "zero",
     1: "one",
     2: "two",
@@ -30,51 +30,26 @@ digits_to_words = {
     90: "ninety"
 }
 
-denominations = ['ones', 'tens', 'hundreds']
+
 
 
 def say(integer):
-    integer = int(integer)
-    list_of_ints = [int(l) for l in str(integer)]
-    if integer < 21:
-        return digits_to_words[integer]
-    elif integer < 99:
-        return between_21_and_99(list_of_ints)
-    elif integer == 100:
-        return "one hundred"
-    elif integer < 1000:
-        return greater_than_100(list_of_ints)
-    elif integer == 1000:
-        return "one thousand"
-    elif integer == 1000000:
-        return "one million"
-    elif integer < 10000:
-        return greater_than_1000(list_of_ints)
+    out_of_range(integer)
+    if integer > 20:
+        return less_than_101(integer)
+    return less_than_21(integer)
 
 
-def between_21_and_99(integer_list):
-    response = []
-    tens = integer_list[0] * 10
-    ones = integer_list[-1]
-    response.append(digits_to_words[tens])
-    response.append(digits_to_words[ones])
-    return '-'.join(response)
+def less_than_21(integer):
+    return DIGITS_TO_WORDS[integer]
 
-def greater_than_100(integer_list):
-    hundreds = say(integer_list[0])
-    tens = get_tens(integer_list, 1,2)
-    tens = say(int(tens))
-    return hundreds + ' hundred and ' + tens
+def less_than_101(integer):
+    ones = str(integer)[:-1]
+    tens = str(integer)[0] + '0'
+    return ''.join([DIGITS_TO_WORDS[int(tens)], '-',DIGITS_TO_WORDS[int(ones)]])
 
-def greater_than_1000(integer_list):
-    thousands = say(integer_list[0])
-    hundreds = say(integer_list[1])
-    tens = get_tens(integer_list, 2, 3)
-    tens = say(int(tens))
-    return thousands + ' thousand ' + hundreds +' hundred and ' + tens
-
-def get_tens(integer_list, first_index, second_index):
-    return str(integer_list[first_index]) + str(integer_list[second_index])
-
-
-
+def out_of_range(integer):
+    if integer < 0:
+        raise AttributeError('integer must be greater than 0')
+    elif integer >= 1e12:
+        raise AttributeError('integer too big!')
