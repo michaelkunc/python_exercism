@@ -34,6 +34,7 @@ denominations = ['ones', 'tens', 'hundreds']
 
 
 def say(integer):
+    integer = int(integer)
     list_of_ints = [int(l) for l in str(integer)]
     if integer < 21:
         return digits_to_words[integer]
@@ -45,6 +46,8 @@ def say(integer):
         return greater_than_100(list_of_ints)
     elif integer == 1000:
         return "one thousand"
+    elif integer == 1000000:
+        return "one million"
     elif integer < 10000:
         return greater_than_1000(list_of_ints)
 

@@ -33,8 +33,8 @@ class SayTest(unittest.TestCase):
         self.assertEqual("one thousand two hundred and thirty-four",
                          say(1234))
 
-    # def test_one_million(self):
-    #     self.assertEqual("one million", say(1e6))
+    def test_one_million(self):
+        self.assertEqual("one million", say(1e6))
 
     # def test_one_million_two(self):
     #     self.assertEqual("one million and two", say(1000002))
