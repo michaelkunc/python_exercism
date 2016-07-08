@@ -17,11 +17,11 @@ class SayTest(unittest.TestCase):
     def test_twenty_two(self):
         self.assertEqual("twenty-two", say(22))
 
-    # def test_one_hundred(self):
-    #     self.assertEqual("one hundred", say(100))
+    def test_one_hundred(self):
+        self.assertEqual("one hundred", say(100))
 
-    # def test_one_hundred_twenty(self):
-    #     self.assertEqual("one hundred and twenty", say(120))
+    def test_one_hundred_twenty(self):
+        self.assertEqual("one hundred and twenty", say(120))
 
     # def test_one_hundred_twenty_three(self):
     #     self.assertEqual("one hundred and twenty-three", say(123))

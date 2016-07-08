@@ -33,7 +33,14 @@ DIGITS_TO_WORDS = {
 
 def say(integer):
     out_of_range(integer)
-    if integer > 20:
+    if integer > 99:
+        result = []
+        result.append(less_than_1000(integer))
+        integer = integer - ((int(str(integer)[0])) * 100)
+        if integer > 0:
+            result.append(' and '+str(less_than_21(integer)))
+        return ''.join(result)
+    elif integer > 20:
         return less_than_100(integer)
     else:
         return less_than_21(integer)
@@ -44,6 +51,10 @@ def less_than_21(integer):
 def less_than_100(integer):
     tens_ones = divmod(integer, 10)
     return DIGITS_TO_WORDS[tens_ones[0] * 10] + '-' + DIGITS_TO_WORDS[tens_ones[1]] 
+
+def less_than_1000(integer):
+    hundreds = int(str(integer)[0])
+    return DIGITS_TO_WORDS[hundreds] + ' hundred'
 
 
 def out_of_range(integer):
