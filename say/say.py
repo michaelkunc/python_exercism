@@ -31,22 +31,20 @@ DIGITS_TO_WORDS = {
 }
 
 
-
-
 def say(integer):
     out_of_range(integer)
     if integer > 20:
-        return less_than_101(integer)
-    return less_than_21(integer)
-
+        return less_than_100(integer)
+    else:
+        return less_than_21(integer)
 
 def less_than_21(integer):
     return DIGITS_TO_WORDS[integer]
 
-def less_than_101(integer):
-    ones = str(integer)[:-1]
-    tens = str(integer)[0] + '0'
-    return ''.join([DIGITS_TO_WORDS[int(tens)], '-',DIGITS_TO_WORDS[int(ones)]])
+def less_than_100(integer):
+    tens_ones = divmod(integer, 10)
+    return DIGITS_TO_WORDS[tens_ones[0] * 10] + '-' + DIGITS_TO_WORDS[tens_ones[1]] 
+
 
 def out_of_range(integer):
     if integer < 0:
