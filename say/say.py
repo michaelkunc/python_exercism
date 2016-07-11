@@ -34,27 +34,53 @@ DIGITS_TO_WORDS = {
 def say(integer):
     out_of_range(integer)
     if integer > 99:
-        result = []
-        result.append(less_than_1000(integer))
-        integer = integer - ((int(str(integer)[0])) * 100)
-        if integer > 0:
-            result.append(' and '+str(less_than_21(integer)))
-        return ''.join(result)
+        return handle_the_hundreds(integer)
     elif integer > 20:
         return less_than_100(integer)
     else:
         return less_than_21(integer)
 
+
 def less_than_21(integer):
     return DIGITS_TO_WORDS[integer]
 
+
 def less_than_100(integer):
     tens_ones = divmod(integer, 10)
-    return DIGITS_TO_WORDS[tens_ones[0] * 10] + '-' + DIGITS_TO_WORDS[tens_ones[1]] 
+    return DIGITS_TO_WORDS[tens_ones[0] * 10] + '-' + DIGITS_TO_WORDS[tens_ones[1]]
+
 
 def less_than_1000(integer):
     hundreds = int(str(integer)[0])
     return DIGITS_TO_WORDS[hundreds] + ' hundred'
+
+
+def handle_the_hundreds(integer):
+    result = []
+    result.append(less_than_1000(integer))
+    integer = integer - ((int(str(integer)[0])) * 100)
+    if integer > 0 and integer < 21:
+        result.append(' and ' + str(less_than_21(integer)))
+    elif integer > 0:
+        result.append(' and ' + str(less_than_100(integer)))
+    return ''.join(result)
+
+
+def divy_into_hundreds(integer):
+    integer = str(integer)
+    leading_digits = len(integer) % 3
+    if leading_digits == 0:
+        return split_remaining_digits(integer)
+    else:
+        return split_leading_digits(integer, leading_digits) + split_remaining_digits(integer)
+
+
+def split_leading_digits(integer, leading_digits):
+    return [integer[0:leading_digits]]
+
+
+def split_remaining_digits(integer):
+    return [integer[i:i + 3] for i in range(0, len(integer), 3)]
 
 
 def out_of_range(integer):
