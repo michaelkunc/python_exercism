@@ -30,10 +30,15 @@ DIGITS_TO_WORDS = {
     90: "ninety"
 }
 
+MAGNITUDES = ['thousand', 'million','billion']
+
 
 def say(integer):
     out_of_range(integer)
-    if integer > 99:
+    if integer > 999:
+        split_integer = divy_into_hundreds(integer)
+        return less_than_21(int(split_integer[0])) + ' thousand'
+    elif integer > 99:
         return handle_the_hundreds(integer)
     elif integer > 20:
         return less_than_100(integer)
@@ -72,7 +77,7 @@ def divy_into_hundreds(integer):
     if leading_digits == 0:
         return split_remaining_digits(integer)
     else:
-        return split_leading_digits(integer, leading_digits) + split_remaining_digits(integer)
+        return split_leading_digits(integer, leading_digits) + split_remaining_digits(integer[leading_digits:])
 
 
 def split_leading_digits(integer, leading_digits):
