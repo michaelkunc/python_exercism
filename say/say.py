@@ -36,14 +36,14 @@ MAGNITUDES = ['thousand', 'million', 'billion']
 def say(integer):
     out_of_range(integer)
     if integer > 999:
-        split_integer = divy_into_hundreds(integer)
-        return less_than_21(int(split_integer[0])) + ' thousand'
+        split_integer = divy_into_hundreds(str(integer))
+        return less_than_21(split_integer[0]) + ' thousand'
     elif integer > 99:
-        return handle_the_hundreds(integer)
+        return handle_the_hundreds(str(integer))
     elif integer > 20:
-        return less_than_100(integer)
+        return less_than_100(str(integer))
     else:
-        return less_than_21(convert_int_to_str(integer))
+        return less_than_21(str(integer))
 
 
 def less_than_21(integer):
@@ -51,28 +51,25 @@ def less_than_21(integer):
 
 
 def less_than_100(integer):
-    tens_ones = divmod(integer, 10)
-    return DIGITS_TO_WORDS[tens_ones[0] * 10] + '-' + DIGITS_TO_WORDS[tens_ones[1]]
+    return DIGITS_TO_WORDS[integer[0] + '0'] + '-' + DIGITS_TO_WORDS[integer[1]]
 
 
 def less_than_1000(integer):
-    hundreds = int(str(integer)[0])
-    return DIGITS_TO_WORDS[hundreds] + ' hundred'
+    return DIGITS_TO_WORDS[integer[0]] + ' hundred'
 
 
 def handle_the_hundreds(integer):
     result = []
     result.append(less_than_1000(integer))
-    integer = integer - ((int(str(integer)[0])) * 100)
+    integer = int(integer[1:])
     if integer > 0 and integer < 21:
-        result.append(' and ' + str(less_than_21(integer)))
+        result.append(' and ' + less_than_21(str(integer)))
     elif integer > 0:
-        result.append(' and ' + str(less_than_100(integer)))
+        result.append(' and ' + less_than_100(str(integer)))
     return ''.join(result)
 
 
 def divy_into_hundreds(integer):
-    integer = str(integer)
     leading_digits = len(integer) % 3
     if leading_digits == 0:
         return split_remaining_digits(integer)
@@ -86,10 +83,6 @@ def split_leading_digits(integer, leading_digits):
 
 def split_remaining_digits(integer):
     return [integer[i:i + 3] for i in range(0, len(integer), 3)]
-
-
-def convert_int_to_str(integer):
-    return str(integer)
 
 
 def out_of_range(integer):

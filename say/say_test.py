@@ -8,26 +8,26 @@ class SayTest(unittest.TestCase):
     def test_one(self):
         self.assertEqual("one", say(1))
 
-    # def test_fourteen(self):
-    #     self.assertEqual("fourteen", say(14))
+    def test_fourteen(self):
+        self.assertEqual("fourteen", say(14))
 
-    # def test_twenty(self):
-    #     self.assertEqual("twenty", say(20))
+    def test_twenty(self):
+        self.assertEqual("twenty", say(20))
 
-    # def test_twenty_two(self):
-    #     self.assertEqual("twenty-two", say(22))
+    def test_twenty_two(self):
+        self.assertEqual("twenty-two", say(22))
 
-    # def test_one_hundred(self):
-    #     self.assertEqual("one hundred", say(100))
+    def test_one_hundred(self):
+        self.assertEqual("one hundred", say(100))
 
-    # def test_one_hundred_twenty(self):
-    #     self.assertEqual("one hundred and twenty", say(120))
+    def test_one_hundred_twenty(self):
+        self.assertEqual("one hundred and twenty", say(120))
 
-    # def test_one_hundred_twenty_three(self):
-    #     self.assertEqual("one hundred and twenty-three", say(123))
+    def test_one_hundred_twenty_three(self):
+        self.assertEqual("one hundred and twenty-three", say(123))
 
-    # def test_one_thousand(self):
-    #     self.assertEqual("one thousand", say(1000))
+    def test_one_thousand(self):
+        self.assertEqual("one thousand", say(1000))
 
     # def test_one_thousand_two_hundred_thirty_four(self):
     #     self.assertEqual("one thousand two hundred and thirty-four",
