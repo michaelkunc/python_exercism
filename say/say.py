@@ -37,7 +37,10 @@ def say(integer):
     out_of_range(integer)
     if integer > 999:
         split_integer = divy_into_hundreds(str(integer))
-        return less_than_21(split_integer[0]) + ' thousand'
+        if split_integer[1] == '000':
+            return less_than_21(split_integer[0]) + ' thousand'
+        else:
+            return less_than_21(split_integer[0]) + ' thousand ' + handle_the_hundreds(split_integer[1])
     elif integer > 99:
         return handle_the_hundreds(str(integer))
     elif integer > 20:
