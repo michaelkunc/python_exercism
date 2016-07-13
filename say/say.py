@@ -35,7 +35,9 @@ MAGNITUDES = ['thousand', 'million', 'billion']
 
 def say(integer):
     out_of_range(integer)
-    if integer > 999:
+    if integer > 999999:
+        return 'a million, bitches!'
+    elif integer > 999:
         split_integer = divy_into_hundreds(str(integer))
         if split_integer[1] == '000':
             return less_than_21(split_integer[0]) + ' thousand'
