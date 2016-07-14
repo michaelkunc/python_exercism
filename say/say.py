@@ -53,7 +53,7 @@ def say(integer):
         if check_for_all_zeros(split_integer):
             return simple_number(split_integer, MAGNITUDES[1])
         else:
-            return ''.join([less_than_21(split_integer[0]), ' ', MAGNITUDES[1], ' ', handle_the_hundreds(split_integer[1])])
+            return thousands(split_integer,MAGNITUDES[1])
     elif len(integer) == 3:
         return handle_the_hundreds(integer)
     elif int(integer) > 20:
@@ -105,8 +105,12 @@ def split_remaining_digits(integer):
 def check_for_all_zeros(split_integer):
     return set(split_integer[1:]) == {'000'}
 
+
 def simple_number(split_integer, magnitude):
     return ''.join([less_than_21(split_integer[0]), ' ', magnitude])
+
+def thousands(split_integer, magnitude):
+    return ''.join([less_than_21(split_integer[0]), ' ', magnitude, ' ', handle_the_hundreds(split_integer[1])])
 
 def out_of_range(integer):
     # integer = str(integer)
