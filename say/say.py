@@ -30,7 +30,7 @@ DIGITS_TO_WORDS = {
     '90': "ninety"
 }
 
-MAGNITUDES = ['hundred','thousand', 'million', 'billion']
+MAGNITUDES = ['hundred', 'thousand', 'million', 'billion']
 
 
 def say(integer):
@@ -38,24 +38,24 @@ def say(integer):
     out_of_range(integer)
     if integer > 9999999:
         split_integer = divy_into_hundreds(str(integer))
-        if split_integer[1] and split_integer[2] == '000':
-            return less_than_21(split_integer[0]) + ' '+MAGNITUDES[3]
+        if set(split_integer[1:]) == {'000'}:
+            return ''.join([less_than_21(split_integer[0]),' ',MAGNITUDES[3]])
         else:
-            return handle_the_hundreds(split_integer[0]) + ' ' +MAGNITUDES[3] + ' ' + handle_the_hundreds(split_integer[1]) + ' '+MAGNITUDES[2]+' ' + handle_the_hundreds(split_integer[2]) + ' ' +MAGNITUDES[1]+' '+ handle_the_hundreds(split_integer[3])
+            return ''.join([handle_the_hundreds(split_integer[0]),' ',MAGNITUDES[3],' ',handle_the_hundreds(split_integer[1]),' ',MAGNITUDES[2],' ',handle_the_hundreds(split_integer[2]),' ',MAGNITUDES[1],' ',handle_the_hundreds(split_integer[3])])
     elif integer > 999999:
         split_integer = divy_into_hundreds(str(integer))
-        if split_integer[1] and split_integer[2] == '000':
-            return less_than_21(split_integer[0]) + ' '+MAGNITUDES[2]
+        if set(split_integer[1:]) == {'000'}:
+            return ''.join([less_than_21(split_integer[0]), ' ', MAGNITUDES[2]])
         elif split_integer[1] == '000':
-            return less_than_21(split_integer[0]) + ' '+MAGNITUDES[2]+' and ' + less_than_21(str(int(split_integer[2])))
+            return ''.join([less_than_21(split_integer[0]), ' ', MAGNITUDES[2], ' and ', less_than_21(str(int(split_integer[2])))])
         else:
-            return less_than_21(split_integer[0]) + ' '+MAGNITUDES[2]+' ' + less_than_21(str(int(split_integer[1]))) + ' ' +MAGNITUDES[1]+' '+ handle_the_hundreds(split_integer[2])
+            return ''.join([less_than_21(split_integer[0]), ' ', MAGNITUDES[2], ' ', less_than_21(str(int(split_integer[1]))), ' ', MAGNITUDES[1], ' ', handle_the_hundreds(split_integer[2])])
     elif integer > 999:
         split_integer = divy_into_hundreds(str(integer))
-        if split_integer[1] == '000':
-            return less_than_21(split_integer[0]) + ' ' + MAGNITUDES[1]
+        if set(split_integer[1:]) == {'000'}:
+            return ''.join([less_than_21(split_integer[0]), ' ', MAGNITUDES[1]])
         else:
-            return less_than_21(split_integer[0]) + ' ' + MAGNITUDES[1] +' '+ handle_the_hundreds(split_integer[1])
+            return ''.join([less_than_21(split_integer[0]), ' ', MAGNITUDES[1], ' ', handle_the_hundreds(split_integer[1])])
     elif integer > 99:
         return handle_the_hundreds(str(integer))
     elif integer > 20:
