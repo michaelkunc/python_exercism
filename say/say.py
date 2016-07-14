@@ -40,6 +40,8 @@ def say(integer):
         split_integer = divy_into_hundreds(str(integer))
         if split_integer[1] and split_integer[2] == '000':
             return less_than_21(split_integer[0]) + ' billion'
+        else:
+            return handle_the_hundreds(split_integer[0]) + ' billion ' + handle_the_hundreds(split_integer[1]) + ' million ' + handle_the_hundreds(split_integer[2]) + ' thousand ' + handle_the_hundreds(split_integer[3])
     elif integer > 999999:
         split_integer = divy_into_hundreds(str(integer))
         if split_integer[1] and split_integer[2] == '000':
