@@ -38,13 +38,13 @@ def say(integer):
     out_of_range(integer)
     if integer > 9999999:
         split_integer = divy_into_hundreds(str(integer))
-        if set(split_integer[1:]) == {'000'}:
-            return ''.join([less_than_21(split_integer[0]),' ',MAGNITUDES[3]])
+        if check_for_all_zeros(split_integer):
+            return ''.join([less_than_21(split_integer[0]), ' ', MAGNITUDES[3]])
         else:
-            return ''.join([handle_the_hundreds(split_integer[0]),' ',MAGNITUDES[3],' ',handle_the_hundreds(split_integer[1]),' ',MAGNITUDES[2],' ',handle_the_hundreds(split_integer[2]),' ',MAGNITUDES[1],' ',handle_the_hundreds(split_integer[3])])
+            return ''.join([handle_the_hundreds(split_integer[0]), ' ', MAGNITUDES[3], ' ', handle_the_hundreds(split_integer[1]), ' ', MAGNITUDES[2], ' ', handle_the_hundreds(split_integer[2]), ' ', MAGNITUDES[1], ' ', handle_the_hundreds(split_integer[3])])
     elif integer > 999999:
         split_integer = divy_into_hundreds(str(integer))
-        if set(split_integer[1:]) == {'000'}:
+        if check_for_all_zeros(split_integer):
             return ''.join([less_than_21(split_integer[0]), ' ', MAGNITUDES[2]])
         elif split_integer[1] == '000':
             return ''.join([less_than_21(split_integer[0]), ' ', MAGNITUDES[2], ' and ', less_than_21(split_integer[2])])
@@ -52,7 +52,7 @@ def say(integer):
             return ''.join([less_than_21(split_integer[0]), ' ', MAGNITUDES[2], ' ', less_than_21(split_integer[1]), ' ', MAGNITUDES[1], ' ', handle_the_hundreds(split_integer[2])])
     elif integer > 999:
         split_integer = divy_into_hundreds(str(integer))
-        if set(split_integer[1:]) == {'000'}:
+        if check_for_all_zeros(split_integer):
             return ''.join([less_than_21(split_integer[0]), ' ', MAGNITUDES[1]])
         else:
             return ''.join([less_than_21(split_integer[0]), ' ', MAGNITUDES[1], ' ', handle_the_hundreds(split_integer[1])])
@@ -103,6 +103,9 @@ def split_leading_digits(integer, leading_digits):
 def split_remaining_digits(integer):
     return [integer[i:i + 3] for i in range(0, len(integer), 3)]
 
+
+def check_for_all_zeros(split_integer):
+    return set(split_integer[1:]) == {'000'}
 
 def out_of_range(integer):
     if integer < 0:
