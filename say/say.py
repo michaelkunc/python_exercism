@@ -34,34 +34,32 @@ MAGNITUDES = ['hundred', 'thousand', 'million', 'billion']
 
 
 def say(integer):
-    integer = int(integer)
+    integer = str(int(integer))
     out_of_range(integer)
-    if integer > 9999999:
-        split_integer = divy_into_hundreds(str(integer))
+    split_integer = divy_into_hundreds(integer)
+    if len(integer) >= 10 and len(integer) <= 13 :
         if check_for_all_zeros(split_integer):
-            return ''.join([less_than_21(split_integer[0]), ' ', MAGNITUDES[3]])
+            return simple_number(split_integer, MAGNITUDES[3])
         else:
             return ''.join([handle_the_hundreds(split_integer[0]), ' ', MAGNITUDES[3], ' ', handle_the_hundreds(split_integer[1]), ' ', MAGNITUDES[2], ' ', handle_the_hundreds(split_integer[2]), ' ', MAGNITUDES[1], ' ', handle_the_hundreds(split_integer[3])])
-    elif integer > 999999:
-        split_integer = divy_into_hundreds(str(integer))
+    elif len(integer) == 7:
         if check_for_all_zeros(split_integer):
-            return ''.join([less_than_21(split_integer[0]), ' ', MAGNITUDES[2]])
+            return simple_number(split_integer, MAGNITUDES[2])
         elif split_integer[1] == '000':
             return ''.join([less_than_21(split_integer[0]), ' ', MAGNITUDES[2], ' and ', less_than_21(split_integer[2])])
         else:
             return ''.join([less_than_21(split_integer[0]), ' ', MAGNITUDES[2], ' ', less_than_21(split_integer[1]), ' ', MAGNITUDES[1], ' ', handle_the_hundreds(split_integer[2])])
-    elif integer > 999:
-        split_integer = divy_into_hundreds(str(integer))
+    elif len(integer) == 4:
         if check_for_all_zeros(split_integer):
-            return ''.join([less_than_21(split_integer[0]), ' ', MAGNITUDES[1]])
+            return simple_number(split_integer, MAGNITUDES[1])
         else:
             return ''.join([less_than_21(split_integer[0]), ' ', MAGNITUDES[1], ' ', handle_the_hundreds(split_integer[1])])
-    elif integer > 99:
-        return handle_the_hundreds(str(integer))
-    elif integer > 20:
-        return less_than_100(str(integer))
+    elif len(integer) == 3:
+        return handle_the_hundreds(integer)
+    elif int(integer) > 20:
+        return less_than_100(integer)
     else:
-        return less_than_21(str(integer))
+        return less_than_21(integer)
 
 
 def less_than_21(integer):
@@ -107,8 +105,12 @@ def split_remaining_digits(integer):
 def check_for_all_zeros(split_integer):
     return set(split_integer[1:]) == {'000'}
 
+def simple_number(split_integer, magnitude):
+    return ''.join([less_than_21(split_integer[0]), ' ', magnitude])
+
 def out_of_range(integer):
-    if integer < 0:
+    # integer = str(integer)
+    if integer[0]  == '-' :
         raise AttributeError('integer must be greater than 0')
-    elif integer >= 1e12:
+    elif len(integer) > 12:
         raise AttributeError('integer too big!')
