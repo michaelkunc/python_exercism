@@ -44,8 +44,8 @@ class SayTest(unittest.TestCase):
             "one million two thousand three hundred and forty-five",
             say(1002345))
 
-    # def test_one_billion(self):
-    #     self.assertEqual("one billion", say(1e9))
+    def test_one_billion(self):
+        self.assertEqual("one billion", say(1e9))
 
     def test_number_to_large(self):
         with self.assertRaises(AttributeError):
