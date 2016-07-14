@@ -47,9 +47,9 @@ def say(integer):
         if set(split_integer[1:]) == {'000'}:
             return ''.join([less_than_21(split_integer[0]), ' ', MAGNITUDES[2]])
         elif split_integer[1] == '000':
-            return ''.join([less_than_21(split_integer[0]), ' ', MAGNITUDES[2], ' and ', less_than_21(str(int(split_integer[2])))])
+            return ''.join([less_than_21(split_integer[0]), ' ', MAGNITUDES[2], ' and ', less_than_21(split_integer[2])])
         else:
-            return ''.join([less_than_21(split_integer[0]), ' ', MAGNITUDES[2], ' ', less_than_21(str(int(split_integer[1]))), ' ', MAGNITUDES[1], ' ', handle_the_hundreds(split_integer[2])])
+            return ''.join([less_than_21(split_integer[0]), ' ', MAGNITUDES[2], ' ', less_than_21(split_integer[1]), ' ', MAGNITUDES[1], ' ', handle_the_hundreds(split_integer[2])])
     elif integer > 999:
         split_integer = divy_into_hundreds(str(integer))
         if set(split_integer[1:]) == {'000'}:
@@ -65,6 +65,7 @@ def say(integer):
 
 
 def less_than_21(integer):
+    integer = str(int(integer))
     return DIGITS_TO_WORDS[integer]
 
 
