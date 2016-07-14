@@ -42,6 +42,8 @@ def say(integer):
             return less_than_21(split_integer[0]) + ' million'
         elif split_integer[1] == '000':
             return less_than_21(split_integer[0]) + ' million and ' + less_than_21(str(int(split_integer[2])))
+        else:
+            return less_than_21(split_integer[0]) + ' million ' + less_than_21(str(int(split_integer[1]))) + ' thousand ' + handle_the_hundreds(split_integer[2])
     elif integer > 999:
         split_integer = divy_into_hundreds(str(integer))
         if split_integer[1] == '000':

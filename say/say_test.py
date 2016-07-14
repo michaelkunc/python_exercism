@@ -39,10 +39,10 @@ class SayTest(unittest.TestCase):
     def test_one_million_two(self):
         self.assertEqual("one million and two", say(1000002))
 
-    # def test_1002345(self):
-    #     self.assertEqual(
-    #         "one million two thousand three hundred and forty-five",
-    #         say(1002345))
+    def test_1002345(self):
+        self.assertEqual(
+            "one million two thousand three hundred and forty-five",
+            say(1002345))
 
     # def test_one_billion(self):
     #     self.assertEqual("one billion", say(1e9))
