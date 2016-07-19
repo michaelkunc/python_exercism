@@ -26,6 +26,13 @@ class Robot(object):
     def turn_left(self):
         return self.turn(self.bearing_index(), operator.gt(self.bearing_index(), 0), operator.sub(self.bearing_index(), 1), -1)
 
+    def advance(self):
+        coordinate1 = self.coordinates[0]
+        coordinate2 = self.coordinates[1]
+        coordinate2 = coordinate2 + 1
+        self.coordinates = (coordinate1, coordinate2)
+
+
     def turn(self, current_bearing, lt_gt, add_sub, else_index):
         if lt_gt:
             self.bearing = DIRECTIONS[add_sub]
