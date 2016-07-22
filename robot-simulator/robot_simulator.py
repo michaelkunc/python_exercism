@@ -11,13 +11,17 @@ DIRECTIONS = [NORTH, EAST, SOUTH, WEST]
 class Robot(object):
 
     def __init__(self, direction=None, coordinate1=None, coordinate2=None):
-        if direction is None:
-            self.bearing = DIRECTIONS[0]
-        else:
+        self.set_initial_direction(direction)
+        self.set_initial_coordinates(coordinate1, coordinate2)
+
+    def set_initial_direction(self, direction=None):
+        self.bearing = NORTH
+        if direction is not None:
             self.bearing = direction
-        if coordinate1 is None and coordinate2 is None:
-            self.coordinates = (0, 0)
-        else:
+
+    def set_initial_coordinates(self, coordinate1=None, coordinate2=None):
+        self.coordinates = (0, 0)
+        if coordinate1 is not None and coordinate2 is not None:
             self.coordinates = (coordinate1, coordinate2)
 
     def turn_right(self):
@@ -41,16 +45,15 @@ class Robot(object):
 
     def simulate(self, instructions):
         for i in list(instructions):
-            self.parse_instructions(i)
+            self.parse_instruction(i)
 
-    def parse_instructions(self, single_instruction):
+    def parse_instruction(self, single_instruction):
         if single_instruction == 'L':
             self.turn_left()
         elif single_instruction == 'R':
             self.turn_right()
         else:
             self.advance()
-
 
     def turn(self, current_bearing, lt_gt, add_sub, else_index):
         if lt_gt:
