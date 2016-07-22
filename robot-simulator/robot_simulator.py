@@ -29,8 +29,27 @@ class Robot(object):
     def advance(self):
         coordinate1 = self.coordinates[0]
         coordinate2 = self.coordinates[1]
-        coordinate2 = coordinate2 + 1
+        if self.bearing == NORTH:
+            coordinate2 = coordinate2 + 1
+        elif self.bearing == EAST:
+            coordinate1 = coordinate1 + 1
+        elif self.bearing == SOUTH:
+            coordinate2 = coordinate2 - 1
+        else:
+            coordinate1 = coordinate1 - 1
         self.coordinates = (coordinate1, coordinate2)
+
+    def simulate(self, instructions):
+        for i in list(instructions):
+            self.parse_instructions(i)
+
+    def parse_instructions(self, single_instruction):
+        if single_instruction == 'L':
+            self.turn_left()
+        elif single_instruction == 'R':
+            self.turn_right()
+        else:
+            self.advance()
 
 
     def turn(self, current_bearing, lt_gt, add_sub, else_index):

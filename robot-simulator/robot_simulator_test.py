@@ -33,41 +33,41 @@ class RobotTests(unittest.TestCase):
         self.assertEqual((0, 1), robot.coordinates)
         self.assertEqual(NORTH, robot.bearing)
 
-    # def test_advance_positive_east(self):
-    #     robot = Robot(EAST, 0, 0)
-    #     robot.advance()
-    #     self.assertEqual((1, 0), robot.coordinates)
-    #     self.assertEqual(EAST, robot.bearing)
+    def test_advance_positive_east(self):
+        robot = Robot(EAST, 0, 0)
+        robot.advance()
+        self.assertEqual((1, 0), robot.coordinates)
+        self.assertEqual(EAST, robot.bearing)
 
-    # def test_advance_negative_south(self):
-    #     robot = Robot(SOUTH, 0, 0)
-    #     robot.advance()
-    #     self.assertEqual((0, -1), robot.coordinates)
-    #     self.assertEqual(SOUTH, robot.bearing)
+    def test_advance_negative_south(self):
+        robot = Robot(SOUTH, 0, 0)
+        robot.advance()
+        self.assertEqual((0, -1), robot.coordinates)
+        self.assertEqual(SOUTH, robot.bearing)
 
-    # def test_advance_positive_west(self):
-    #     robot = Robot(WEST, 0, 0)
-    #     robot.advance()
-    #     self.assertEqual((-1, 0), robot.coordinates)
-    #     self.assertEqual(WEST, robot.bearing)
+    def test_advance_positive_west(self):
+        robot = Robot(WEST, 0, 0)
+        robot.advance()
+        self.assertEqual((-1, 0), robot.coordinates)
+        self.assertEqual(WEST, robot.bearing)
 
-    # def test_simulate_prog1(self):
-    #     robot = Robot(NORTH, 0, 0)
-    #     robot.simulate("LAAARALA")
-    #     self.assertEqual((-4, 1), robot.coordinates)
-    #     self.assertEqual(WEST, robot.bearing)
+    def test_simulate_prog1(self):
+        robot = Robot(NORTH, 0, 0)
+        robot.simulate("LAAARALA")
+        self.assertEqual((-4, 1), robot.coordinates)
+        self.assertEqual(WEST, robot.bearing)
 
-    # def test_simulate_prog2(self):
-    #     robot = Robot(EAST, 2, -7)
-    #     robot.simulate("RRAAAAALA")
-    #     self.assertEqual((-3, -8), robot.coordinates)
-    #     self.assertEqual(SOUTH, robot.bearing)
+    def test_simulate_prog2(self):
+        robot = Robot(EAST, 2, -7)
+        robot.simulate("RRAAAAALA")
+        self.assertEqual((-3, -8), robot.coordinates)
+        self.assertEqual(SOUTH, robot.bearing)
 
-    # def test_simulate_prog3(self):
-    #     robot = Robot(SOUTH, 8, 4)
-    #     robot.simulate("LAAARRRALLLL")
-    #     self.assertEqual((11, 5), robot.coordinates)
-    #     self.assertEqual(NORTH, robot.bearing)
+    def test_simulate_prog3(self):
+        robot = Robot(SOUTH, 8, 4)
+        robot.simulate("LAAARRRALLLL")
+        self.assertEqual((11, 5), robot.coordinates)
+        self.assertEqual(NORTH, robot.bearing)
 
 if __name__ == '__main__':
     unittest.main()
