@@ -30,14 +30,16 @@ TENS_TEENS_ONES = {
     90: "ninety"
 }
 
-# MAGNITUDES = ['hundred', 'thousand', 'million', 'billion']
+MAGNITUDES = [(1e9, 'billion'), (1e6, 'million'), (1000, 'thousand'), (100, 'hundred')]
 
 def say(integer):
-    if integer in TENS_TEENS_ONES.keys():
+    if integer in TENS_TEENS_ONES:
         return TENS_TEENS_ONES[integer]
-    else:
-        tens, ones = divmod(integer, 10)[0] * 10, divmod(integer, 10)[1]
-        return ''.join([say(tens), '-', say(ones)])
+    for n, magnitude in MAGNITUDES:
+
+    # else:
+        # tens, ones = divmod(integer, 10)[0] * 10, divmod(integer, 10)[1]
+        # return ''.join([say(tens), '-', say(ones)])
 
 
 
