@@ -39,9 +39,11 @@ def say(integer):
         return less_than_100(integer)
     else:
         for num, name in MAGNITUDES:
-            leading_digit, remaind = divmod(integer, num)
+            leading_digit, remainder = divmod(integer, num)
             if leading_digit:
                 words.append(''.join([say(leading_digit), name]))
+        if remainder:
+            words.append(''.join([' and ',say(remainder)]))
 
     return ''.join(words)
 
