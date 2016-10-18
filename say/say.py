@@ -1,5 +1,5 @@
 
-TENS_TEENS_ONES = {
+ZERO_TO_NINETEEN = {
     0: "zero",
     1: "one",
     2: "two",
@@ -20,7 +20,8 @@ TENS_TEENS_ONES = {
     17: "seventeen",
     18: "eighteen",
     19: "nineteen",
-    20: "twenty",
+}
+TENS = {20: "twenty",
     30: "thirty",
     40: "forty",
     50: "fifty",
@@ -30,16 +31,29 @@ TENS_TEENS_ONES = {
     90: "ninety"
 }
 
-MAGNITUDES = [(1e9, 'billion'), (1e6, 'million'), (1000, 'thousand'), (100, 'hundred')]
+MAGNITUDES = [(1e9, 'billion'), (1e6, 'million'), (1000, 'thousand'), (100, ' hundred')]
 
 def say(integer):
-    if integer in TENS_TEENS_ONES:
-        return TENS_TEENS_ONES[integer]
-    for n, magnitude in MAGNITUDES:
+    words = []
+    if integer <100:
+        return less_than_100(integer)
+    else:
+        for num, name in MAGNITUDES:
+            leading_digit, remaind = divmod(integer, num)
+            if leading_digit:
+                words.append(''.join([say(leading_digit), name]))
 
-    # else:
-        # tens, ones = divmod(integer, 10)[0] * 10, divmod(integer, 10)[1]
-        # return ''.join([say(tens), '-', say(ones)])
+    return ''.join(words)
+
+def less_than_100(integer):
+    if integer in ZERO_TO_NINETEEN:
+        return ZERO_TO_NINETEEN[integer]
+    elif integer in TENS:
+        return TENS[integer]
+    else:
+        tens, ones = divmod(integer, 10)
+        return ''.join([TENS[tens * 10],'-', ZERO_TO_NINETEEN[ones]])
+
 
 
 
