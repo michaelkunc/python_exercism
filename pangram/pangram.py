@@ -1,5 +1,5 @@
-import string
+from string import lowercase
 
 def is_pangram(sentence):
     sentence = set(sentence.lower().replace(' ',''))
-    return len(set(string.ascii_lowercase) - sentence) == 0
+    return len(set(lowercase) - sentence) == 0
