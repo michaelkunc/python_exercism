@@ -2,7 +2,7 @@ class Clock(object):
 
     def __init__(self, hours, minutes):
         self.hours = hours + self.minutes_roll_over(minutes)[0]
-        self.minutes = minutes
+        self.minutes = + self.minutes_roll_over(minutes)[1]
 
     def __str__(self):
         return self.format_hours() + ':' + self.format_minutes()
