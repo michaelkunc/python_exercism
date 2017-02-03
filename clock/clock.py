@@ -14,3 +14,7 @@ class Clock(object):
             return '0' + str(number_of_units % unit_of_time)
         else:
             return str(number_of_units % unit_of_time)
+
+    def add(self, additional_minutes):
+        self.minutes = self.minutes + additional_minutes
+        return self
