@@ -1,28 +1,22 @@
 class Clock(object):
+    HOURS = 24
+    MINUTES = 60
 
     def __init__(self, hours, minutes):
-        self.hours = hours
-        self.minutes = minutes
+        self.hours = hours + minutes / Clock.MINUTES
+        self.minutes = minutes % Clock.MINUTES
 
     def __str__(self):
-        hours = self.hours + self.minutes / 60
-        minutes = self.minutes % 60
-        return self.format_hours(hours) + ':' + self.format_minutes(minutes)
+        return self.format(Clock.HOURS, self.hours) + ':' + self.format(Clock.MINUTES, self.minutes)
 
-    def format_hours(self, hour):
-        if hour > 23:
-            return '0' + str(hour % 24)
+    def format(self, unit_of_time, number_of_units):
+        if number_of_units >= unit_of_time:
+            return '0' + str(number_of_units % unit_of_time)
         else:
-            return self.less_than_10(hour)
+            return self.less_than_10(number_of_units)
 
-    def format_minutes(self, minutes):
-        if minutes > 59:
-            return '00'
+    def less_than_10(self, number_of_units):
+        if number_of_units < 10:
+            return '0' + str(number_of_units)
         else:
-            return self.less_than_10(minutes)
-
-    def less_than_10(self, unit_of_time):
-        if unit_of_time < 10:
-            return '0' + str(unit_of_time)
-        else:
-            return str(unit_of_time)
+            return str(number_of_units)
