@@ -21,17 +21,17 @@ class ClockTest(unittest.TestCase):
     def test_hour_rolls_over_continuously(self):
         self.assertEqual('04:00', str(Clock(100, 0)))
 
-    # def test_sixty_minutes_is_next_hour(self):
-    #     self.assertEqual('02:00', str(Clock(1, 60)))
+    def test_sixty_minutes_is_next_hour(self):
+        self.assertEqual('02:00', str(Clock(1, 60)))
 
-    # def test_minutes_roll_over(self):
-    #     self.assertEqual('02:40', str(Clock(0, 160)))
+    def test_minutes_roll_over(self):
+        self.assertEqual('02:40', str(Clock(0, 160)))
 
-    # def test_minutes_roll_over_continuously(self):
-    #     self.assertEqual('04:43', str(Clock(0, 1723)))
+    def test_minutes_roll_over_continuously(self):
+        self.assertEqual('04:43', str(Clock(0, 1723)))
 
-    # def test_hour_and_minutes_roll_over(self):
-    #     self.assertEqual('03:40', str(Clock(25, 160)))
+    def test_hour_and_minutes_roll_over(self):
+        self.assertEqual('03:40', str(Clock(25, 160)))
 
     # def test_hour_and_minutes_roll_over_continuously(self):
     #     self.assertEqual('11:01', str(Clock(201, 3001)))
