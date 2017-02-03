@@ -10,16 +10,7 @@ class Clock(object):
         return self.format(Clock.HOURS, self.hours) + ':' + self.format(Clock.MINUTES, self.minutes)
 
     def format(self, unit_of_time, number_of_units):
-        if number_of_units >= unit_of_time:
-            if (number_of_units % unit_of_time) < 10:
-                return '0' + str(number_of_units % unit_of_time)
-            else:
-                return str(number_of_units % unit_of_time)
+        if (number_of_units % unit_of_time) < 10:
+            return '0' + str(number_of_units % unit_of_time)
         else:
-            return self.less_than_10(number_of_units)
-
-    def less_than_10(self, number_of_units):
-        if number_of_units < 10:
-            return '0' + str(number_of_units)
-        else:
-            return str(number_of_units)
+            return str(number_of_units % unit_of_time)
