@@ -24,3 +24,8 @@ class Clock(object):
     def add(self, additional_minutes):
         self.minutes = self.minutes + additional_minutes
         return self
+
+    def __eq__(self, other):
+        if type(other) is type(self):
+            return str(self) == str(other)
+        return False
