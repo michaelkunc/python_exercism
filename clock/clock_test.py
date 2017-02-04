@@ -63,48 +63,48 @@ class ClockTest(unittest.TestCase):
     def test_negative_hour_and_minutes_both_roll_over_continuously(self):
         self.assertEqual('22:10', str(Clock(-121, -5810)))
 
-#     # Test adding and subtracting minutes.
+        # Test adding and subtracting minutes.
     def test_add_minutes(self):
         self.assertEqual('10:03', str(Clock(10, 0).add(3)))
 
     def test_add_no_minutes(self):
         self.assertEqual('06:41', str(Clock(6, 41).add(0)))
 
-    # def test_add_to_next_hour(self):
-    #     self.assertEqual('01:25', str(Clock(0, 45).add(40)))
+    def test_add_to_next_hour(self):
+        self.assertEqual('01:25', str(Clock(0, 45).add(40)))
 
-#     def test_add_more_than_one_hour(self):
-#         self.assertEqual('11:01', str(Clock(10, 0).add(61)))
+    def test_add_more_than_one_hour(self):
+        self.assertEqual('11:01', str(Clock(10, 0).add(61)))
 
-#     def test_add_more_than_two_hours_with_carry(self):
-#         self.assertEqual('03:25', str(Clock(0, 45).add(160)))
+    def test_add_more_than_two_hours_with_carry(self):
+        self.assertEqual('03:25', str(Clock(0, 45).add(160)))
 
-#     def test_add_across_midnight(self):
-#         self.assertEqual('00:01', str(Clock(23, 59).add(2)))
+    def test_add_across_midnight(self):
+        self.assertEqual('00:01', str(Clock(23, 59).add(2)))
 
-#     def test_add_more_than_one_day(self):
-#         self.assertEqual('06:32', str(Clock(5, 32).add(1500)))
+    def test_add_more_than_one_day(self):
+        self.assertEqual('06:32', str(Clock(5, 32).add(1500)))
 
-#     def test_add_more_than_two_days(self):
-#         self.assertEqual('11:21', str(Clock(1, 1).add(3500)))
+    def test_add_more_than_two_days(self):
+        self.assertEqual('11:21', str(Clock(1, 1).add(3500)))
 
-#     def test_subtract_minutes(self):
-#         self.assertEqual('10:00', str(Clock(10, 3).add(-3)))
+    def test_subtract_minutes(self):
+        self.assertEqual('10:00', str(Clock(10, 3).add(-3)))
 
-#     def test_subtract_to_previous_hour(self):
-#         self.assertEqual('10:00', str(Clock(10, 3).add(-3)))
+    def test_subtract_to_previous_hour(self):
+        self.assertEqual('10:00', str(Clock(10, 3).add(-3)))
 
-#     def test_subtract_more_than_an_hour(self):
-#         self.assertEqual('09:33', str(Clock(10, 3).add(-30)))
+    def test_subtract_more_than_an_hour(self):
+        self.assertEqual('09:33', str(Clock(10, 3).add(-30)))
 
-#     def test_subtract_across_midnight(self):
-#         self.assertEqual('08:53', str(Clock(10, 3).add(-70)))
+    def test_subtract_across_midnight(self):
+        self.assertEqual('08:53', str(Clock(10, 3).add(-70)))
 
-#     def test_subtract_more_than_two_hours(self):
-#         self.assertEqual('21:20', str(Clock(0, 0).add(-160)))
+    def test_subtract_more_than_two_hours(self):
+        self.assertEqual('21:20', str(Clock(0, 0).add(-160)))
 
-#     def test_subtract_more_than_two_hours_with_borrow(self):
-#         self.assertEqual('03:35', str(Clock(6, 15).add(-160)))
+    def test_subtract_more_than_two_hours_with_borrow(self):
+        self.assertEqual('03:35', str(Clock(6, 15).add(-160)))
 
 #     def test_subtract_more_than_one_day(self):
 #         self.assertEqual('04:32', str(Clock(5, 32).add(-1500)))
