@@ -2,4 +2,5 @@ import re
 
 
 def abbreviate(phrase):
-    return ''.join([item[0].upper() for item in re.findall(r'\S+', phrase)])
+    pattern = r'^\w|(?<=\W)\w|(?<=[a-z])[A-Z]'
+    return ''.join([item.upper() for item in re.findall(pattern, phrase)])
