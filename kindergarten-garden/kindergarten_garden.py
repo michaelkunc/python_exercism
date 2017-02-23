@@ -11,7 +11,7 @@ class Garden(object):
     def plants(self, student):
         columns = Garden.STUDENTS.index(
             student), Garden.STUDENTS.index(student) + 1
-        return self.plant_names
+        return self.plant_names[columns[0]]
 
     def plant_names(self, rows):
         return [Garden.PLANTS[i] for i in rows]
