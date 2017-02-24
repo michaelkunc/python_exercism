@@ -5,13 +5,15 @@ class Garden(object):
                 'Ginny', 'Harriet', 'Ileana', 'Joseph', 'Kincaid', 'Larry']
 
     def __init__(self, rows):
-        self.rows = rows.split('\n')
-        self.plant_names = self.plant_names(list(rows.replace('\n', '')))
+        self.rows = [list(i) for i in rows.split('\n')]
 
     def plants(self, student):
-        columns = Garden.STUDENTS.index(
-            student), Garden.STUDENTS.index(student) + 1
-        return self.plant_names[columns[0]]
+        plant_names = []
+        loc = self.student_locations(student)
+        for r in self.rows:
+            plant_names.extend([r[loc[0]], r[loc[1]]])
+        return [Garden.PLANTS[p] for p in plant_names]
 
-    def plant_names(self, rows):
-        return [Garden.PLANTS[i] for i in rows]
+    def student_locations(self, student):
+        return Garden.STUDENTS.index(
+            student), Garden.STUDENTS.index(student) + 1
