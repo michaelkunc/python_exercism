@@ -27,11 +27,11 @@ class LuhnTests(unittest.TestCase):
     def test_invalid_Canadian_SIN(self):
         self.assertFalse(Luhn("055 444 286").is_valid())
 
-    # def test_invalid_credit_card(self):
-    #     self.assertFalse(Luhn("8273 1232 7352 0569").is_valid())
+    def test_invalid_credit_card(self):
+        self.assertFalse(Luhn("8273 1232 7352 0569").is_valid())
 
-    # def test_valid_strings_with_a_non_digit_included_become_invalid(self):
-    #     self.assertFalse(Luhn("055a 444 285").is_valid())
+    def test_valid_strings_with_a_non_digit_included_become_invalid(self):
+        self.assertFalse(Luhn("055a 444 285").is_valid())
 
     # def test_valid_strings_with_punctuation_included_become_invalid(self):
     #     self.assertFalse(Luhn("055-444-285").is_valid())
