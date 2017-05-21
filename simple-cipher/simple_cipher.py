@@ -5,25 +5,34 @@ class Cipher(object):
 
     def __init__(self, key=None):
         self._key = key
-        self.letter_map = ascii_lowercase[
-            self.key:] + ascii_lowercase[:self.key]
 
     def encode(self, plaintext):
-        return self._shift_letters(plaintext, ascii_lowercase, self.letter_map)
+        cipher_text = ''
+        key_list = self.key * (int(len(plaintext) / len(self.key)) + 1)
+        for index, char in enumerate(filter(str.isalpha, plaintext.lower())):
+            i = (ascii_lowercase.index(char) + key_list[index]) % 26
+            cipher_text += ascii_lowercase[i]
+        return cipher_text
 
     def decode(self, ciphertext):
-        return self._shift_letters(ciphertext, self.letter_map, ascii_lowercase)
+        plaintext = ''
+        key_list = self.key * (int(len(ciphertext) / len(self.key)) + 1)
+        for index, char in enumerate(filter(str.isalpha, ciphertext.lower())):
+            i = (ascii_lowercase.index(char) - key_list[index]) % 26
+            plaintext += ascii_lowercase[i]
+        return plaintext
 
-    def _shift_letters(self, text, from_alpha, to_alpha):
-        return_text = ''
-        for index, char in enumerate(filter(str.isalpha, text)):
-            map_index = from_alpha.index(char.lower())
-            return_text += to_alpha[map_index]
-        return return_text
+    # @staticmethod
+    # def _shift_letters(text, from_alpha, to_alpha):
+    #     return_text = ''
+    #     for index, char in enumerate(filter(str.isalpha, text)):
+    #         map_index = from_alpha.index(char.lower())
+    #         return_text += to_alpha[map_index]
+    #     return return_text
 
     @property
     def key(self):
-        return ascii_lowercase.index(self._key)
+        return [ascii_lowercase.index(item) for item in self._key]
 
 
 class Caesar(Cipher):

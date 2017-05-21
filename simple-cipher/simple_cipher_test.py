@@ -28,37 +28,37 @@ class CipherTest(unittest.TestCase):
             c.encode('itisawesomeprogramminginpython'),
             'itisawesomeprogramminginpython')
 
-    # def test_cipher_encode2(self):
-    #     c = Cipher('aaaaaaaaaaaaaaaaaaaaaa')
-    #     self.assertEqual(
-    #         c.encode('itisawesomeprogramminginpython'),
-    #         'itisawesomeprogramminginpython')
+    def test_cipher_encode2(self):
+        c = Cipher('aaaaaaaaaaaaaaaaaaaaaa')
+        self.assertEqual(
+            c.encode('itisawesomeprogramminginpython'),
+            'itisawesomeprogramminginpython')
 
-#     def test_cipher_encode3(self):
-#         c = Cipher('dddddddddddddddddddddd')
-#         self.assertEqual(c.encode('venividivici'), 'yhqlylglylfl')
+    def test_cipher_encode3(self):
+        c = Cipher('dddddddddddddddddddddd')
+        self.assertEqual(c.encode('venividivici'), 'yhqlylglylfl')
 
-#     def test_cipher_encode4(self):
-#         key = ('duxrceqyaimciuucnelkeoxjhdyduucpmrxmaivacmybmsdrzwqxvbxsy'
-#                'gzsabdjmdjabeorttiwinfrpmpogvabiofqexnohrqu')
-#         c = Cipher(key)
-#         self.assertEqual(c.encode('diffiehellman'), 'gccwkixcltycv')
+    def test_cipher_encode4(self):
+        key = ('duxrceqyaimciuucnelkeoxjhdyduucpmrxmaivacmybmsdrzwqxvbxsy'
+               'gzsabdjmdjabeorttiwinfrpmpogvabiofqexnohrqu')
+        c = Cipher(key)
+        self.assertEqual(c.encode('diffiehellman'), 'gccwkixcltycv')
 
-#     def test_cipher_encode_short_key(self):
-#         c = Cipher('abcd')
-#         self.assertEqual(c.encode('aaaaaaaa'), 'abcdabcd')
+    def test_cipher_encode_short_key(self):
+        c = Cipher('abcd')
+        self.assertEqual(c.encode('aaaaaaaa'), 'abcdabcd')
 
-#     def test_cipher_compositiion1(self):
-#         key = ('duxrceqyaimciuucnelkeoxjhdyduucpmrxmaivacmybmsdrzwqxvbxsy'
-#                'gzsabdjmdjabeorttiwinfrpmpogvabiofqexnohrqu')
-#         plaintext = 'adaywithoutlaughterisadaywasted'
-#         c = Cipher(key)
-#         self.assertEqual(c.decode(c.encode(plaintext)), plaintext)
+    def test_cipher_compositiion1(self):
+        key = ('duxrceqyaimciuucnelkeoxjhdyduucpmrxmaivacmybmsdrzwqxvbxsy'
+               'gzsabdjmdjabeorttiwinfrpmpogvabiofqexnohrqu')
+        plaintext = 'adaywithoutlaughterisadaywasted'
+        c = Cipher(key)
+        self.assertEqual(c.decode(c.encode(plaintext)), plaintext)
 
-#     def test_cipher_compositiion2(self):
-#         plaintext = 'adaywithoutlaughterisadaywasted'
-#         c = Cipher()
-#         self.assertEqual(c.decode(c.encode(plaintext)), plaintext)
+    # def test_cipher_compositiion2(self):
+    #     plaintext = 'adaywithoutlaughterisadaywasted'
+    #     c = Cipher()
+    #     self.assertEqual(c.decode(c.encode(plaintext)), plaintext)
 
 #     def test_cipher_random_key(self):
 #         c = Cipher()
