@@ -9,30 +9,30 @@ class CipherTest(unittest.TestCase):
         self.assertEqual(Caesar().encode('itisawesomeprogramminginpython'),
                          'lwlvdzhvrphsurjudpplqjlqsbwkrq')
 
-    # def test_caesar_encode2(self):
-    #     self.assertEqual(Caesar().encode('venividivici'), 'yhqlylglylfl')
+    def test_caesar_encode2(self):
+        self.assertEqual(Caesar().encode('venividivici'), 'yhqlylglylfl')
 
-    # def test_caesar_encode3(self):
-    #     self.assertEqual(Caesar().encode('\'Twas the night before Christmas'),
-    #                      'wzdvwkhqljkwehiruhfkulvwpdv')
+    def test_caesar_encode3(self):
+        self.assertEqual(Caesar().encode('\'Twas the night before Christmas'),
+                         'wzdvwkhqljkwehiruhfkulvwpdv')
 
-    # def test_caesar_encode_with_numbers(self):
-    #     self.assertEqual(Caesar().encode('1, 2, 3, Go!'), 'jr')
+    def test_caesar_encode_with_numbers(self):
+        self.assertEqual(Caesar().encode('1, 2, 3, Go!'), 'jr')
 
-    # def test_caesar_decode(self):
-    #     self.assertEqual(Caesar().decode('yhqlylglylfl'), 'venividivici')
+    def test_caesar_decode(self):
+        self.assertEqual(Caesar().decode('yhqlylglylfl'), 'venividivici')
 
-    # def test_cipher_encode1(self):
-    #     c = Cipher('a')
+    def test_cipher_encode1(self):
+        c = Cipher('a')
+        self.assertEqual(
+            c.encode('itisawesomeprogramminginpython'),
+            'itisawesomeprogramminginpython')
+
+    # def test_cipher_encode2(self):
+    #     c = Cipher('aaaaaaaaaaaaaaaaaaaaaa')
     #     self.assertEqual(
     #         c.encode('itisawesomeprogramminginpython'),
     #         'itisawesomeprogramminginpython')
-
-#     def test_cipher_encode2(self):
-#         c = Cipher('aaaaaaaaaaaaaaaaaaaaaa')
-#         self.assertEqual(
-#             c.encode('itisawesomeprogramminginpython'),
-#             'itisawesomeprogramminginpython')
 
 #     def test_cipher_encode3(self):
 #         c = Cipher('dddddddddddddddddddddd')
