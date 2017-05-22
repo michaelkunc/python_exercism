@@ -1,4 +1,5 @@
 from string import ascii_lowercase
+import random
 
 
 class Cipher(object):
@@ -6,33 +7,31 @@ class Cipher(object):
     def __init__(self, key=None):
         self._key = key
 
-    def encode(self, plaintext):
-        cipher_text = ''
-        key_list = self.key * (int(len(plaintext) / len(self.key)) + 1)
-        for index, char in enumerate(filter(str.isalpha, plaintext.lower())):
-            i = (ascii_lowercase.index(char) + key_list[index]) % 26
-            cipher_text += ascii_lowercase[i]
-        return cipher_text
+    def encode(self, plain):
+        return self._shift_letters(plain, self._shift_length(plain))
 
-    def decode(self, ciphertext):
-        plaintext = ''
-        key_list = self.key * (int(len(ciphertext) / len(self.key)) + 1)
-        for index, char in enumerate(filter(str.isalpha, ciphertext.lower())):
-            i = (ascii_lowercase.index(char) - key_list[index]) % 26
-            plaintext += ascii_lowercase[i]
-        return plaintext
+    def decode(self, cipher):
+        negative_offset = [i * -1 for i in self._shift_length(cipher)]
+        return self._shift_letters(cipher, negative_offset)
 
-    # @staticmethod
-    # def _shift_letters(text, from_alpha, to_alpha):
-    #     return_text = ''
-    #     for index, char in enumerate(filter(str.isalpha, text)):
-    #         map_index = from_alpha.index(char.lower())
-    #         return_text += to_alpha[map_index]
-    #     return return_text
+    def _shift_length(self, text):
+        return [ascii_lowercase.index(item) for item in self.key] * (int(len(text) / len(self.key)) + 1)
+
+    @staticmethod
+    def _shift_letters(text, shift_length):
+        return_text = ''
+        for index, char in enumerate(filter(str.isalpha, text.lower())):
+            i = (ascii_lowercase.index(char) +
+                 shift_length[index]) % 26
+            return_text += ascii_lowercase[i]
+        return return_text
 
     @property
     def key(self):
-        return [ascii_lowercase.index(item) for item in self._key]
+        if not self._key:
+            return ''.join([random.choice(ascii_lowercase) for i in range(100)])
+        else:
+            return self._key
 
 
 class Caesar(Cipher):
