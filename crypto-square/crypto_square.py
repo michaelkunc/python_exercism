@@ -1,8 +1,7 @@
-import math
+from math import sqrt, ceil
 
 
 def encode(plaintext):
     normalized = plaintext.lower()
-    columns = math.sqrt(len(normalized))
-    cipher_text = normalized
-    return cipher_text
+    cols = ceil(sqrt(len(normalized)))
+    return ' '.join([normalized[x::cols] for x in range(cols)])
