@@ -34,65 +34,65 @@ class SublistTest(unittest.TestCase):
             EQUAL
         )
 
-#     def test_different_lists(self):
-#         self.assertEqual(
-#             check_lists([1, 2, 3], [2, 3, 4]),
-#             UNEQUAL
-#         )
+    def test_different_lists(self):
+        self.assertEqual(
+            check_lists([1, 2, 3], [2, 3, 4]),
+            UNEQUAL
+        )
 
-#     def test_false_start(self):
-#         self.assertEqual(
-#             check_lists([1, 2, 5], [0, 1, 2, 3, 1, 2, 5, 6]),
-#             SUBLIST
-#         )
+    def test_false_start(self):
+        self.assertEqual(
+            check_lists([1, 2, 5], [0, 1, 2, 3, 1, 2, 5, 6]),
+            SUBLIST
+        )
 
-#     def test_consecutive(self):
-#         self.assertEqual(
-#             check_lists([1, 1, 2], [0, 1, 1, 1, 2, 1, 2]),
-#             SUBLIST
-#         )
+    def test_consecutive(self):
+        self.assertEqual(
+            check_lists([1, 1, 2], [0, 1, 1, 1, 2, 1, 2]),
+            SUBLIST
+        )
 
-#     def test_sublist_at_start(self):
-#         self.assertEqual(
-#             check_lists([0, 1, 2], [0, 1, 2, 3, 4, 5]),
-#             SUBLIST
-#         )
+    def test_sublist_at_start(self):
+        self.assertEqual(
+            check_lists([0, 1, 2], [0, 1, 2, 3, 4, 5]),
+            SUBLIST
+        )
 
-#     def test_sublist_in_middle(self):
-#         self.assertEqual(
-#             check_lists([2, 3, 4], [0, 1, 2, 3, 4, 5]),
-#             SUBLIST
-#         )
+    def test_sublist_in_middle(self):
+        self.assertEqual(
+            check_lists([2, 3, 4], [0, 1, 2, 3, 4, 5]),
+            SUBLIST
+        )
 
-#     def test_sublist_at_end(self):
-#         self.assertEqual(
-#             check_lists([3, 4, 5], [0, 1, 2, 3, 4, 5]),
-#             SUBLIST
-#         )
+    def test_sublist_at_end(self):
+        self.assertEqual(
+            check_lists([3, 4, 5], [0, 1, 2, 3, 4, 5]),
+            SUBLIST
+        )
 
-#     def test_at_start_of_superlist(self):
-#         self.assertEqual(
-#             check_lists([0, 1, 2, 3, 4, 5], [0, 1, 2]),
-#             SUPERLIST
-#         )
+    def test_at_start_of_superlist(self):
+        self.assertEqual(
+            check_lists([0, 1, 2, 3, 4, 5], [0, 1, 2]),
+            SUPERLIST
+        )
 
-#     def test_in_middle_of_superlist(self):
-#         self.assertEqual(
-#             check_lists([0, 1, 2, 3, 4, 5], [2, 3]),
-#             SUPERLIST
-#         )
+    def test_in_middle_of_superlist(self):
+        self.assertEqual(
+            check_lists([0, 1, 2, 3, 4, 5], [2, 3]),
+            SUPERLIST
+        )
 
-#     def test_at_end_of_superlist(self):
-#         self.assertEqual(
-#             check_lists([0, 1, 2, 3, 4, 5], [3, 4, 5]),
-#             SUPERLIST
-#         )
+    def test_at_end_of_superlist(self):
+        self.assertEqual(
+            check_lists([0, 1, 2, 3, 4, 5], [3, 4, 5]),
+            SUPERLIST
+        )
 
-#     def test_first_list_missing_element_from_second_list(self):
-#         self.assertEqual(
-#             check_lists([1, 3], [1, 2, 3]),
-#             UNEQUAL
-#         )
+    # def test_first_list_missing_element_from_second_list(self):
+    #     self.assertEqual(
+    #         check_lists([1, 3], [1, 2, 3]),
+    #         UNEQUAL
+    #     )
 
 #     def test_second_list_missing_element_from_first_list(self):
 #         self.assertEqual(
