@@ -88,23 +88,23 @@ class SublistTest(unittest.TestCase):
             SUPERLIST
         )
 
-    # def test_first_list_missing_element_from_second_list(self):
-    #     self.assertEqual(
-    #         check_lists([1, 3], [1, 2, 3]),
-    #         UNEQUAL
-    #     )
+    def test_first_list_missing_element_from_second_list(self):
+        self.assertEqual(
+            check_lists([1, 3], [1, 2, 3]),
+            UNEQUAL
+        )
 
-    # def test_second_list_missing_element_from_first_list(self):
-    #     self.assertEqual(
-    #         check_lists([1, 2, 3], [1, 3]),
-    #         UNEQUAL
-    #     )
+    def test_second_list_missing_element_from_first_list(self):
+        self.assertEqual(
+            check_lists([1, 2, 3], [1, 3]),
+            UNEQUAL
+        )
 
-    # def test_order_matters_to_a_list(self):
-    #     self.assertEqual(
-    #         check_lists([1, 2, 3], [3, 2, 1]),
-    #         UNEQUAL
-    #     )
+    def test_order_matters_to_a_list(self):
+        self.assertEqual(
+            check_lists([1, 2, 3], [3, 2, 1]),
+            UNEQUAL
+        )
 
     def test_same_digits_but_different_numbers(self):
         self.assertEqual(
@@ -119,17 +119,17 @@ class SublistTest(unittest.TestCase):
             UNEQUAL
         )
 
-#     # additional track specific test
+    # # additional track specific test
     def test_large_lists(self):
         l1 = list(range(1000)) * 1000 + list(range(1000, 1100))
         l2 = list(range(900, 1050))
         self.assertEqual(check_lists(l1, l2), SUPERLIST)
 
-#     # additional track specific test
-    # def test_spread_sublist(self):
-    #     multiples_of_3 = list(range(3, 200, 3))
-    #     multiples_of_15 = list(range(15, 200, 15))
-    #     self.assertEqual(check_lists(multiples_of_15, multiples_of_3), UNEQUAL)
+    # # additional track specific test
+    def test_spread_sublist(self):
+        multiples_of_3 = list(range(3, 200, 3))
+        multiples_of_15 = list(range(15, 200, 15))
+        self.assertEqual(check_lists(multiples_of_15, multiples_of_3), UNEQUAL)
 
 
 if __name__ == '__main__':

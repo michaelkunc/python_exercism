@@ -1,26 +1,21 @@
-
-def SUBLIST():
-    pass
-
-
-def SUPERLIST():
-    pass
-
-
-def EQUAL():
-    pass
-
-
-def UNEQUAL():
-    pass
+SUBLIST = 0
+SUPERLIST = 1
+EQUAL = 2
+UNEQUAL = 3
 
 
 def check_lists(first_list, second_list):
     if first_list == second_list:
         return EQUAL
-    elif all(i in second_list for i in first_list):
-        return SUBLIST
-    elif all(i in first_list for i in second_list):
-        return SUPERLIST
+    elif len(second_list) < len(first_list):
+        return find_pattern(second_list, first_list, SUPERLIST)
+
     else:
-        return UNEQUAL
+        return find_pattern(first_list, second_list, SUBLIST)
+
+
+def find_pattern(small_list, large_list, return_value):
+    for i in range(len(large_list) - len(small_list) + 1):
+        if small_list == large_list[i:i + len(small_list)]:
+            return return_value
+    return UNEQUAL
