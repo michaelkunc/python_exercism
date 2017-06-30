@@ -5,26 +5,27 @@ def primitive_triplets(number):
     if number % 2 != 0:
         raise ValueError
     else:
-        results = []
-        a, b, c = 1, 3, 0
-        while c < number:
-            a_ = (a * b) + a
-            c = math.sqrt(a_**2 + b**2)
-            if c == int(c):
-                results.append((b, a_, int(c)))
-            a += 1
-            b += 1
-        return set(results)
+        results = set()
+        for (m, n) in _get_factors(number // 2):
+            if math.gcd(m, n) == 1:
+                triplet = tuple(sorted((m**2 - n**2, 2 * m * n, m**2 + n**2)))
+                results.add(triplet)
+        return results
+
+
+def _get_factors(n):
+    return ((n // i, i) for i in range(1, int(math.sqrt(n)) + 1) if n % i == 0)
 
 
 def triplets_in_range(start, end):
-    results = []
-    for x in range(start, end + 1):
-        for y in range(start, end + 1):
-            for z in range(start, end + 1):
-                if x * x == y * y + z * z:
-                    results.append(tuple(sorted([x, y, z])))
-    return set(results)
+    end = end + 1
+    results = set()
+    for a in range(start, end):
+        for b in range(a + 1, end):
+            for c in range(b + 1, end):
+                if a * a + b * b == c * c:
+                    results.add((a, b, c))
+    return results
 
 
 def is_triplet(numbers):
