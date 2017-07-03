@@ -85,25 +85,25 @@ class CircularBufferTest(unittest.TestCase):
         with self.assertRaises(BufferEmptyException):
             buf.read()
 
-    #     def test_alternate_read_and_overwrite(self):
-    #         buf = CircularBuffer(5)
-    #         for c in '123':
-    #             buf.write(c)
-    #         buf.read()
-    #         buf.read()
-    #         buf.write('4')
-    #         buf.read()
-    #         for c in '5678':
-    #             buf.write(c)
-    #         buf.overwrite('A')
-    #         buf.overwrite('B')
-    #         self.assertEqual(buf.read(), '6')
-    #         self.assertEqual(buf.read(), '7')
-    #         self.assertEqual(buf.read(), '8')
-    #         self.assertEqual(buf.read(), 'A')
-    #         self.assertEqual(buf.read(), 'B')
-    #         with self.assertRaises(BufferEmptyException):
-    #             buf.read()
+    def test_alternate_read_and_overwrite(self):
+        buf = CircularBuffer(5)
+        for c in '123':
+            buf.write(c)
+        buf.read()
+        buf.read()
+        buf.write('4')
+        buf.read()
+        for c in '5678':
+            buf.write(c)
+        buf.overwrite('A')
+        buf.overwrite('B')
+        self.assertEqual(buf.read(), '6')
+        self.assertEqual(buf.read(), '7')
+        self.assertEqual(buf.read(), '8')
+        self.assertEqual(buf.read(), 'A')
+        self.assertEqual(buf.read(), 'B')
+        with self.assertRaises(BufferEmptyException):
+            buf.read()
 
 
 if __name__ == '__main__':

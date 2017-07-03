@@ -34,4 +34,4 @@ class CircularBuffer(object):
             self.write(element)
         else:
             self.elements.popleft()
-            self.elements.append(element)
+            self.write(element)
