@@ -30,7 +30,7 @@ class CircularBuffer(object):
         self.elements.clear()
 
     def overwrite(self, element):
-        if not self.elements:
+        if len(self.elements) < self.elements.maxlen:
             self.write(element)
         else:
             self.elements.popleft()

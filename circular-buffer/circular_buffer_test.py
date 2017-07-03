@@ -76,14 +76,14 @@ class CircularBufferTest(unittest.TestCase):
         with self.assertRaises(BufferEmptyException):
             buf.read()
 
-    # def test_overwrite_non_full_buffer(self):
-    #     buf = CircularBuffer(2)
-    #     buf.overwrite('1')
-    #     buf.overwrite('2')
-    #     self.assertEqual(buf.read(), '1')
-        # self.assertEqual(buf.read(), '2')
-        # with self.assertRaises(BufferEmptyException):
-        #     buf.read()
+    def test_overwrite_non_full_buffer(self):
+        buf = CircularBuffer(2)
+        buf.overwrite('1')
+        buf.overwrite('2')
+        self.assertEqual(buf.read(), '1')
+        self.assertEqual(buf.read(), '2')
+        with self.assertRaises(BufferEmptyException):
+            buf.read()
 
     #     def test_alternate_read_and_overwrite(self):
     #         buf = CircularBuffer(5)
