@@ -20,5 +20,10 @@ def score(dice, category):
     item_counts = Counter(dice)
     if item_counts.most_common(n=1)[0][1] == 5 and category is YACHT:
         return YACHT
+    if category == FULL_HOUSE:
+        if set(item_counts.values()) == {2, 3}:
+            return sum(dice)
+        else:
+            return 0
     else:
         return item_counts[category] * category
